@@ -63,11 +63,11 @@ for fn in os.listdir(s):
 		#print(newfolder)
 		#print(newfile)
 
-# now we have valid paths and filenames, we do the sorting		
+# now we have valid paths and filenames, we do the sorting
 		if not os.path.isdir(newfolder):	# if no existing folder, create it
 			os.makedirs(newfolder)
 			print('Folder {} created.'.format(namefixed)
-			
+
 			if move == True:
 				os.rename(sourcefile,newfile)
 				print("file moved to new directory")
@@ -91,3 +91,4 @@ for fn in os.listdir(s):
 					print("Unable to copy file. %s" % e)
 				except:
 					print("Unexpected error:", sys.exc_info())
+# updated file
