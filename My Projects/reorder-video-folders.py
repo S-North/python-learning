@@ -55,16 +55,15 @@ for fn in os.listdir(s):
 	elif filenamesplit[-1] in (extensions) and len(filenamesplit) > 1:
 		ext = filenamesplit.pop()
 		namefixed = " ".join(filenamesplit).title()
-		#namefixed = namejoined.title()
 		print('The filename is:',namefixed, '. The extension is: ', ext)
 
-# now we have a valid file and filename, we do the sorting
+
 		newfolder = os.path.join(d,namefixed)
 		newfile = os.path.join(newfolder,namefixed + "." + ext)
-		print(sourcefile)
-		#print(namefixed)
-		print(newfolder)
-		print(newfile)
+		#print(sourcefile)
+		#print(newfolder)
+		#print(newfile)
+		# now we have valid paths and filenames, we do the sorting		
 		
 		if not os.path.isdir(newfolder):	# if no existing folder, create it
 			os.makedirs(newfolder)
