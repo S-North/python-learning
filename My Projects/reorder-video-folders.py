@@ -55,25 +55,26 @@ for fn in os.listdir(s):
 	elif filenamesplit[-1] in (extensions) and len(filenamesplit) > 1:
 		ext = filenamesplit.pop()
 		namefixed = " ".join(filenamesplit).title()
-		print('The filename is:',namefixed, '. The extension is: ', ext)
-
+		print('The filename is: {}. The extension is: {}'.format(namefixed,ext)
 
 		newfolder = os.path.join(d,namefixed)
 		newfile = os.path.join(newfolder,namefixed + "." + ext)
 		#print(sourcefile)
 		#print(newfolder)
 		#print(newfile)
-		# now we have valid paths and filenames, we do the sorting		
-		
+
+# now we have valid paths and filenames, we do the sorting		
 		if not os.path.isdir(newfolder):	# if no existing folder, create it
 			os.makedirs(newfolder)
-			print("Folder",namefixed,"created.")
+			print('Folder {} created.'.format(namefixed)
+			
 			if move == True:
 				os.rename(sourcefile,newfile)
 				print("file moved to new directory")
 			else:
 				try:
 					shutil.copy(sourcefile,newfile)
+			      		print("file moved to new directory")
 				except IOError as e:
 					print("Unable to copy file. %s" % e)
 				except:
@@ -85,6 +86,7 @@ for fn in os.listdir(s):
 			else:
 				try:
 					shutil.copy(sourcefile,newfile)
+			      		print("file moved to new directory")
 				except IOError as e:
 					print("Unable to copy file. %s" % e)
 				except:
