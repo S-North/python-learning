@@ -39,52 +39,53 @@ if input("Would you like to move the files (default is to copy)? y/n: ") == "y":
 
 # walk the files, run checks on extensions, directories etc and buld useful file paths
 for fn in os.listdir(s):
-	fullpath = str(s + fn)
-	filenamelist = fn.split(".")
+	sourcefile = str(s + fn)
+	filenamesplit = fn.split(".")
 	print("----------------------------------------------")
-	print(fn,filenamelist,len(filenamelist))
+	print(fn,filenamesplit,len(filenamesplit))
 
-	if os.path.isdir(fullpath) == True:
+	if os.path.isdir(sourcefile) == True:
 		print("This is a directory and will be ignored")
 		print("")
 
-	elif filenamelist[-1] not in (extensions):
+	elif filenamesplit[-1] not in (extensions):
 		print("This file isn't an allowed type and will be skipped. If you want it included, add the extension to the var 'extensions'")
 		print("")
 
-	elif filenamelist[-1] in (extensions) and len(filenamelist) > 1:
-		ext = filenamelist.pop()
-		namejoined = " ".join(filenamelist)
-		namefixed = namejoined.title()
+	elif filenamesplit[-1] in (extensions) and len(filenamesplit) > 1:
+		ext = filenamesplit.pop()
+		namefixed = " ".join(filenamesplit).title()
+		#namefixed = namejoined.title()
 		print('The filename is:',namefixed, '. The extension is: ', ext)
 
 # now we have a valid file and filename, we do the sorting
 		newfolder = os.path.join(d,namefixed)
 		newfile = os.path.join(newfolder,namefixed + "." + ext)
+		print(sourcefile)
+		#print(namefixed)
 		print(newfolder)
-		print(fullpath)
 		print(newfile)
-
+		
 		if not os.path.isdir(newfolder):	# if no existing folder, create it
 			os.makedirs(newfolder)
 			print("Folder",namefixed,"created.")
 			if move == True:
-				os.rename(fullpath,newfile)
+				os.rename(sourcefile,newfile)
 				print("file moved to new directory")
 			else:
 				try:
-					shutil.copy(fullpath,newfile)
+					shutil.copy(sourcefile,newfile)
 				except IOError as e:
 					print("Unable to copy file. %s" % e)
 				except:
 					print("Unexpected error:", sys.exc_info())
 		else:
 			if move == True:
-				os.rename(fullpath,newfile)
+				os.rename(sourcefile,newfile)
 				print("file moved to new directory")
 			else:
 				try:
-					shutil.copy(fullpath,newfile)
+					shutil.copy(sourcefile,newfile)
 				except IOError as e:
 					print("Unable to copy file. %s" % e)
 				except:
