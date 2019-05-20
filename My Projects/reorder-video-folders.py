@@ -91,4 +91,3 @@ for fn in os.listdir(s):
 					print("Unable to copy file. %s" % e)
 				except:
 					print("Unexpected error:", sys.exc_info())
-# updated file
