@@ -4,8 +4,9 @@
 
 import os
 
-# s = enter the full path to the root directory containing your unsorted files. no training slash e.g. /path/to/your/folder
-# d = enter the full path to the root directory where you want your sorted files. This can be the same as s. no training slash e.g. /path/to/your/folder
+# s = enter the full path to the root directory containing your unsorted files inc trailing slash e.g. /path/to/your/folder/
+# d = enter the full path to the root directory where you want your sorted files inc trailing slash e.g. /path/to/your/folder/.
+# d folder can be the same as s.
 # extensions = only extensions listed in this variable will be sorted.
 extensions = ["mkv","mp4","avi","srt","obs","uxv"]
 s = "/home/stuart/python-rename-folder/src-folder/"
@@ -29,10 +30,9 @@ for fn in os.listdir(s):
 
 	elif filenamelist[-1] in (extensions) and len(filenamelist) > 1:
 		ext = filenamelist.pop()
-		namefixed = " ".join(filenamelist)
-		print('the extension is: ', ext)
-		print('the filename is:',namefixed)
-		print("")
+		namejoined = " ".join(filenamelist)
+		namefixed = namejoined.title()
+		print('The filename is:',namefixed, '. The extension is: ', ext)
 
 # now we have a valid file and filename, we do the sorting
 		newfolder = d + namefixed
@@ -42,8 +42,10 @@ for fn in os.listdir(s):
 		#print(newfile)
 
 		if not os.path.isdir(newfolder):	# if no existing folder, create it
-			print("no folder at ",namefixed)
 			os.makedirs(newfolder)
+			print("Folder",namefixed,"created.")
 			os.rename(fullpath,newfile)
+			print("file moved to new directory")
 		else:
 			os.rename(fullpath,newfile)
+			print("file moved to new directory")
