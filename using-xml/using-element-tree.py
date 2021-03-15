@@ -69,5 +69,7 @@ print(monster.tag)
 for child in monster:
     print(child.tag)
 
-for elem in monster.findall(".='Blue Mage'"):
-    print(elem.text)
+# for elem in monster.findall(".='Blue Mage'"):
+#     print(elem.text)
+# tried using the xpath for elementtree which documentation says is supported but it throws an error. Might look at lxml
+# was trying to select an element based on its text content e.g. <monster><name>Blue Mage</name></monster> then get its parent. i.e. find a moster by its name.
