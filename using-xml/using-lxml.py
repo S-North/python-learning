@@ -9,7 +9,7 @@ print (root[0][0].tag)
 for index, elem in zip(range(1, len(compendium.xpath("/compendium/monster/name/text()"))), compendium.xpath("/compendium/monster/name/text()")):
     print (str(index).ljust(4), elem)
 
-monster = root.xpath('//name[. = "Archmage"]/..')[0]
+monster = root.xpath('//name[. = "Archmage"]/..')[0] # search for a text string then use ../ to get the parent object
 print(monster.tag)
 print(monster.find('hp').text)
 for elem in monster:
